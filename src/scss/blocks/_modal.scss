@@ -1,0 +1,56 @@
+// Modal -------------------------------------------
+.links-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 70px;
+    
+    &__btn { 
+        border: 1px solid #ffffff;
+        font-size: 20px;
+        position: relative;
+        transition: all .5s ease-out;
+    }
+}
+
+.modal-btn {
+    
+    &__link {
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-transform: uppercase;
+        color: #eaede4;
+        padding-left: 50px;
+
+        &:after {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 2px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            z-index: 1;
+        }
+
+        &:hover {
+            background-color: #ffffff;
+            cursor: pointer; 
+            color: #53761e;
+
+            &:after {
+                background-color: #53761e;
+            }
+        }    
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .links-wrapper {
+        margin-right: 20px;
+    }
+}

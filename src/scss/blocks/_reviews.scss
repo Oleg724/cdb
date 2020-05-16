@@ -1,0 +1,48 @@
+// Reviews -------------------------------------------
+.reviews {
+    width: 747px;
+    height: 220px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    letter-spacing: 5px;
+
+    &__text {
+        font-size: 22px;
+        font-weight: 300;
+    }
+
+    &__author {
+        font-size: 24px;
+        text-transform: uppercase;
+        position: relative;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 2px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: -70px;
+        }
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .reviews {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .reviews {
+        width: 300px;
+        height: initial;
+    }
+}

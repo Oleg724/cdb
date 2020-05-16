@@ -1,0 +1,28 @@
+// Rating -------------------------------------------
+.rating {
+    display: flex;
+    width: 126px;
+    margin-top: 10px;
+
+    &__icon > path.active {
+        fill: #6e774a;
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        margin: 2px;
+        cursor: pointer;
+
+        & > path {
+            fill: transparent;
+            fill-rule: nonzero;
+            stroke: #6e774a;
+            stroke-width: 15;
+        }
+
+        &--green > path {
+            fill:#6e774a;
+        }
+    }
+}

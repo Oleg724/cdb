@@ -1,0 +1,165 @@
+// Modal-login -------------------------------------------
+.modal-login {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6e774a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    visibility: hidden;
+ 
+    &__login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        height: 90%;
+    }
+
+    &__close {
+        position: absolute;
+        z-index: 2;
+        top: -42px;
+        right: -42px;
+        cursor: pointer;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            width: 42px;
+            height: 2px;
+            background-color: #ffffff;
+            position: absolute;
+            top: 50%;
+        }
+
+        &:after {
+            transform: rotate(45deg);
+        }
+
+        &:before {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &__tab {
+        position: relative;
+        display: none;
+        background-color: #ffffff;
+
+        &--show {
+            display: block;
+            height: 100%;
+        }
+    }
+
+    &__inner {
+        background-color:#ffffff;
+        width: 500px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    &__bottom-message {
+        margin-top: 20px;
+    }
+
+    &__link {
+        color: #4d4b4b;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: 2px solid #4d4b4b;
+        }
+    }
+
+    &__password-reset {
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        visibility: hidden;
+        align-items: center;
+        background-color: #ffffff;
+
+        &--visible {
+            visibility: visible;
+        }
+    }
+}
+
+.switcher {
+    cursor: pointer;
+
+    &__inner {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    &__item {
+        width: 50%;
+        text-align: center;
+        padding: 15px 0;
+        position: relative;
+        z-index: 2;
+        background-color: #6e774a;
+        color: #ffffff;
+
+        &--white {
+            background-color: #ffffff;
+            color: #6e774a;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .modal-login {
+
+        &__close {
+            bottom: 0px;
+            right: 20px;
+            top:initial;
+
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modal-login {
+
+        &__inner {
+            width: 100%;
+        }
+    }
+}

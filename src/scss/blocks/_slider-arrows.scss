@@ -1,0 +1,43 @@
+// Slider-arrows -------------------------------------------
+.slider-arrows {
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4%;
+
+    &__left {
+        transform: rotate(180deg);
+    }
+
+    &__left,
+    &__right {
+        width: 40px;
+        fill: #6e774a;
+        cursor: pointer;
+
+        &--white {
+            fill: #ffffff;
+        }
+    }
+
+    &--position-bottom {
+        position: absolute;
+        bottom: 0;
+        width: 199px;
+        height: 70px;
+    }
+
+    &__wrapper {
+        border: 1px solid #ffffff;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        &:last-child {
+            border-left: none;
+        }
+    }
+}

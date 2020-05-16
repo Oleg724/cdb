@@ -1,0 +1,55 @@
+// Description -------------------------------------------
+.description {
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    text-align: right;
+    margin-right: -20px;
+
+    &__title,
+    &__subtitle {
+        font-size: 55px;
+        font-weight: 400;
+        text-shadow: 0px 0px 36px #000000;
+    }
+
+    &__text {
+        letter-spacing: 9px;
+        font-weight: 300;
+        font-size: 24px;
+        text-transform: capitalize;
+        margin: 15px 15px 0 0;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .description {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .description {
+        
+        &__title {
+            font-size: 35px;
+        }
+
+        &__subtitle {
+            font-size: 35px;
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .description {
+        letter-spacing: 10px;
+        
+        &__title {
+            font-size: 30px;
+        }
+
+        &__subtitle {
+            font-size: 30px;
+        }
+    }
+}

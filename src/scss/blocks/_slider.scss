@@ -1,0 +1,23 @@
+// Slider -------------------------------------------
+.slider,
+.slider-bottom {
+    position: relative;
+    width: 100vw;
+}
+
+.slick-list {
+    overflow: hidden;
+}
+
+.slick-track {
+    display: flex;
+    align-items: flex-start;
+}
+
+.slider .slick-slide {
+    margin: 0 15px 0 15px;
+}
+
+.slider-bottom .slick-slide {
+    margin: 0;
+}

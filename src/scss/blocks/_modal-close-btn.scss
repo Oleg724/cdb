@@ -1,0 +1,55 @@
+// Modal-close-btn -------------------------------------------
+.modal-close-btn {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: 1px solid #6e774a;
+    color: #6e774a;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: all .3s ease-out;
+
+    &:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background-color: #6e774a;
+    }
+
+    &--bottom {
+        top: initial;
+        bottom: 20px;
+        left: initial;
+        right: 50%;
+        transform: translateX(-3%);
+    }
+
+    &--bottom-right {
+        top: initial;
+        bottom: 20px;
+        transform: translateX(3%);
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .modal-close-btn {
+        width: 30%;
+
+        &--bottom-right {
+            top: 0;
+            bottom: initial;
+            transform: translateX(53%);
+        }
+
+        &--bottom {
+            top: 0;
+            bottom: initial;
+            transform: translateX(-53%);
+        }
+    }
+}

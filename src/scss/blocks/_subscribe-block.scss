@@ -1,0 +1,44 @@
+// Sunbscribe-block -------------------------------------------
+.subscribe-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        color: #1c1c1b;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-align: center;
+        padding: 30px;
+    }
+}
+
+.btn {
+    display: block;
+    width: 80px;
+    height: 50px;
+    font-size: 0;
+    border: none;
+    border-left: 2px solid #ced6af;
+    background-color: transparent;
+    transition: all .8s ease-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #ced6af;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &__arrow {
+        width: 25px;
+        fill: #6e774a;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+    }
+}
+

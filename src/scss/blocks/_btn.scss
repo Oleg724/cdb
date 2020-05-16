@@ -1,0 +1,16 @@
+// Form-btn -------------------------------------------
+.form-btn {
+    background-color: #6e774a;
+    width: 100%;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 24px;
+    transition: color .2s ease-out;
+    font-family: 'Oswald', sans-serif;
+
+    &:hover {
+        background-color: #494e32;
+        cursor: pointer;
+    }
+}

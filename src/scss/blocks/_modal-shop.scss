@@ -1,0 +1,130 @@
+// Modal-shop -------------------------------------------
+.modal-shop-wrapper {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    background-color: rgba(0,0,0, .5);
+}
+
+.modal-shop {
+    width: 100%;
+    max-width: calc(100% - 240px);
+    height: 100vh;
+    background-color: #f7f8f3;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: scroll;
+
+    & > .slider-item {
+
+        &:hover .slider-item__image {
+            transform: none;
+        }
+    }
+
+    &__item {
+        width: 100%!important;
+        height: 200px;
+        border: 1px solid #e5e9d4;
+        display: flex;
+        flex-direction: row;
+
+        &:nth-child(2) {
+            margin-top: 52px;
+        }
+
+        & > .rating {
+            display: none;
+        }
+
+        & img {
+            height: 130px;
+        }
+
+        & .slider-item__title {
+            width: 300px;
+            margin: 0 10px 0 30px;
+        }
+
+        & .slider-item__bottom {
+            width: initial;
+            margin-right: 20px;
+            height: 115px;
+
+            & > .slider-item__price {
+                margin-right: 20px;
+                text-align: center;
+            }
+
+            & > .slider-item__btn {
+                display: none;
+
+                &--display {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+
+                    & > a {
+
+                        &:after {
+                            display: none;
+                        }
+
+                        &:nth-child(1) {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .slider-item__image-wrapper {
+            display: block;
+            margin: 0 10px 0 10px;
+            width: 200px;
+            text-align: center;
+            height: 80%;
+        }
+
+        & .slider-item__description {
+            display: flex;
+            width: 50%;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 1080px) {
+    .modal-shop {
+        max-width: 100%;
+
+        &__item {
+
+            & .slider-item__description {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .modal-shop {
+
+        &__item {
+
+            & .slider-item__image-wrapper {
+                display: none;
+            }
+
+            & .slider-item__bottom {
+                width: 50%;
+            }
+        }
+    }
+}

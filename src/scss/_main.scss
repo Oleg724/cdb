@@ -1,0 +1,11 @@
+// Main -------------------------------------------
+body {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    position: relative;
+
+    background-color: #f7f8f3;
+}
+
+@import './blocks/_blocks.scss';

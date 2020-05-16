@@ -1,0 +1,90 @@
+// Top-panel -------------------------------------------
+.top-panel {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 3;
+
+    &__link {
+        width: 120px;
+        height: 80px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-left: 1px solid #ffffff;
+        transition: all .2s ease-out;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 16px;
+
+        &:hover {
+            background-color: #fff;
+        }
+
+        &:hover .top-panel__text {
+            color: #94a2b2;
+        }
+
+        &:hover .top-panel__counter {
+            color: #94a2b2;
+        }
+
+        &:hover .top-panel__logo {
+            fill: #94a2b2;
+        }
+    }
+
+    &__item {
+
+        &--position-relative {
+            position: relative;
+        }
+    }
+
+    &__logo {
+        width: 20px;
+        height: 20px;
+        fill: #ffffff;
+        display: none;
+
+        &--display {
+            display: block;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .top-panel {
+
+        &__text {
+            display: none;
+        }
+
+        &__logo {
+            display: block;
+            width: 42px;
+            height: 42px;
+            
+            &--display {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .top-panel {
+        width: 75%;
+
+        &__link {
+            width: 100%;
+        }
+
+        &__item {
+            width: 100%;
+        }
+    }
+}

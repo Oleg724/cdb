@@ -1,0 +1,172 @@
+// Form -------------------------------------------
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    width: 300px;
+
+    &__item {
+        height: 60px;
+        margin-bottom: 30px;
+        text-indent: 30px;
+        font-size: 18px;
+        border: 1px solid #6e774a;
+
+        &--autofill:-webkit-autofill {
+            box-shadow: 0 0 0 10em white inset !important;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:last-child {
+            text-indent: 0;
+        }
+
+        &::placeholder {
+            color: #6e774a;
+        }
+
+        &:invalid {
+            border: 1px solid #ff3015;
+        }
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: none;
+    outline: 2px solid #ced6af;
+    border-bottom: 2px solid #ced6af;
+    width: 360px;
+
+    &__inner {
+        display: flex;
+        flex-direction: row;
+        border: 2px solid #ced6af;
+        width: 80%;
+    }
+
+    &--width-100 {
+        width: 100%;
+        outline: none;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__btn {
+        position: relative;
+
+        &--bg-white {
+            width: 120px;
+            border: none;
+            background-color: #ffffff;
+            border-left: 2px solid #ced6af;
+            text-transform: uppercase;
+            color: #6e774a;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            outline: none;
+
+            &:hover {
+                background-color: #6e774a;
+                color: #ffffff;
+                cursor: pointer;
+            }
+        }
+
+        &:hover .btn__arrow {
+            fill: #f7f8f3;
+        }
+    }
+
+    &__email {
+        background-color: transparent;
+        border: none;
+        width: 80%;
+        text-indent: 30px;
+
+        &--border {
+            height: 50px;
+
+            &::placeholder {
+                font-size: 18px;
+            }  
+        }
+        
+        &--autofill:-webkit-autofill {
+            box-shadow: 0 0 0 10em white inset !important;
+        }
+
+        &::placeholder {
+            color: #6e774a;
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+
+        &:focus {
+            outline: none;
+        } 
+    }
+
+    &__close {
+        height: 50px;
+        width: 150px;
+        border: 2px solid #ced6af;
+        text-align: center;
+        line-height: 2.7;
+        transition: background-color .3s ease-out;
+        margin: 0 0 50px 0;
+
+        &:hover {
+            background-color: #6e774a;
+            cursor: pointer;
+            color: #ffffff;
+        }
+    }
+
+    &__description {
+        font-size: 14px;
+        text-transform: initial;
+        width: 80%;
+        color: #000000;
+        font-weight: 300;
+
+        & span {
+            font-weight: 500;
+        }
+    }
+
+    &__title {
+        text-transform: capitalize;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        margin-bottom: 10px;
+    }
+
+    &__list {
+        width: 80%;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .form {
+
+        &__email {
+
+            &::placeholder {
+                letter-spacing: 0;
+                font-size: 14px;
+                text-indent: 3px;
+            }
+        }
+    }
+}

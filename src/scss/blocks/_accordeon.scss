@@ -1,0 +1,104 @@
+// Accordeon -------------------------------------------
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 560px;
+
+    &__link {
+        color: #778055;
+        font-size: 18px;
+        font-weight: 300;
+        letter-spacing: 4px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__title {
+        position: relative;
+        z-index: -1;
+    }
+
+    &__body {
+        color: #000000;
+        margin-left: 46px;
+        line-height: 2;
+    }
+
+    &__heading {
+        width: 100%;
+        border-top: 2px solid #eaedde;
+        text-transform: capitalize;
+        transition: all 1s;
+        padding: 20px 0 20px 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.in .panel__icon:before {
+            transform: rotate(360deg);
+        }
+
+        &.in .panel__icon {
+            transform: rotate(-180deg);
+        }
+
+        &.in + .panel__collapse {
+            padding: 15px 0 40px 0;
+            height: 60px;
+            transition: all 1s ease-out;
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background-color: #6e774a;
+        position: relative;
+        margin-right: 25px;
+        transition: all 1s;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 1px;
+            background-color: #6e774a;
+            display: block;
+            top: 0;
+            left: 0;
+            transform: rotate(90deg);
+            transition: all 1s;
+        }
+    }
+
+    &__collapse {
+        transition: all .5s ease-out;
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .panel {
+        width: 90%;
+
+        &__link {
+            letter-spacing: 0;
+        }
+
+        &__heading {
+
+            &.in + .panel__collapse {
+                height: 140px;
+            }
+        }
+    }
+}
