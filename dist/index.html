@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="./images/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,600,700&display=swap" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" rel="stylesheet" type="text/css">
+<!--  <link rel="stylesheet" href="styles.css">-->
+  <title>cbd</title>
+<link href="main.css" rel="stylesheet"></head>
+<body>
+<header class="header" id="header">
+  <div class="header__item nav" id="nav">
+    <input class="nav__btn" type="checkbox" id="navBtn">
+    <label class="nav__icon" for="navBtn">
+      <span class="navicon"></span>
+    </label>
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a href="#home" class="nav__link"><span>Home</span></a>
+      </li>
+      <li class="nav__item">
+        <a href="#questions" class="nav__link"><span>FAQs</span></a>
+      </li>
+      <li class="nav__item">
+        <a href="#products" class="nav__link"><span>Products</span></a>
+      </li>
+      <li class="nav__item">
+        <a href="#contacts" class="nav__link"><span>Contact us</span></a>
+      </li>
+    </ul>
+  </div>
+  <div class="header__item header__item--font-lg title">
+    <p class="title__text">CBD</p>
+  </div>
+  <div class="header__item top-panel">
+    <form class="top-panel__search-form search-form" id="search-highlight" method="post" action="#">
+      <input type="text" placeholder="Search" class="search-form__input" id="textToFind" name="term">
+      <button type="submit" name="Submit" class="search-form__btn" id="searchButton">
+        <svg class="search-form__icon search-form__icon--width" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24">
+          <path d="M15.853 16.56A9.458 9.458 0 019.5 19C4.257 19 0 14.743 0 9.5S4.257 0 9.5 0 19 4.257 19
+                            9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zM9.5 1C14.191 1 18 4.809
+                            18 9.5S14.191 18 9.5 18 1 14.191 1 9.5 4.809 1 9.5 1z"/>
+        </svg>
+      </button>
+      <button type="button" class="search-form__btn" id="search-cancel">
+        <svg class="search-form__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <path d="M500 442.7L79.3 22.6C63.4 6.7 37.7 6.7 21.9 22.5 6.1 38.3 6.1 64 22 79.9L442.6 500 22
+                        920.1c-16 15.9-15.9 41.5-.1 57.4 15.8 15.8 41.6 15.8 57.4-.1L500 557.3l420.7 420.1c16 15.9
+                        41.6 15.9 57.4.1 15.8-15.8 15.8-41.5-.1-57.4L557.4 500 978 79.9c16-15.9
+                        15.9-41.5.1-57.4-15.8-15.8-41.6-15.8-57.4.1L500 442.7z"/>
+        </svg>
+      </button>
+    </form>
+    <p class="results"></p>
+    <div class="top-panel__item">
+      <a href="#" class="top-panel__link" id="login">
+        <svg class="top-panel__logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M16 10v-5l8 7-8 7v-5h-8v-4h8zm-16-8v20h14v-2h-12v-16h12v-2h-14z"/>
+        </svg>
+        <p class="top-panel__text" id="login-text">Login</p>
+      </a>
+    </div>
+    <div class="top-panel__item">
+      <a href="#" class="top-panel__link" id="search">
+        <svg class="top-panel__logo top-panel__logo--display" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24">
+          <path d="M15.853 16.56A9.458 9.458 0 019.5 19C4.257 19 0 14.743 0 9.5S4.257 0 9.5 0 19 4.257 19
+                    9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zM9.5 1C14.191 1 18 4.809
+                    18 9.5S14.191 18 9.5 18 1 14.191 1 9.5 4.809 1 9.5 1z"/>
+        </svg>
+        <p class="top-panel__text" id="search-text">Search</p>
+      </a>
+    </div>
+    <div class="top-panel__item">
+      <a href="#" class="top-panel__link" id="cart">
+        <svg class="top-panel__logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937
+                        7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671
+                        1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671
+                        1.5-1.5c0-.828-.672-1.5-1.5-1.5z"/>
+        </svg>
+        <p class="top-panel__text">Cart</p>
+      </a>
+    </div>
+  </div>
+  <div class="modal-login">
+    <div class="modal-login__inner">
+      <div class="modal-login__close" id="close">Close</div>
+      <div class="modal-login__switcher switcher">
+        <ul class="switcher__inner" id="tabs">
+          <li class="switcher__item switcher__item--white">Sign in</li>
+          <li class="switcher__item">New account</li>
+        </ul>
+      </div>
+      <div class="modal-login__tab modal-login__tab--show">
+        <div class="modal-login__login">
+          <form class="modal-login__form modal-form" id="sign" method="get">
+            <input class="modal-form__item modal-form__item--autofill" name="UserLogin" type="text" minlength="3" placeholder="Login" form="sign" required>
+            <input class="modal-form__item" name="UserPassword" type="password" placeholder="Password" form="sign" required>
+            <button class="modal-form__item form-btn" type="submit" value="Send" form="sign">Send</button>
+          </form>
+          <p class="modal-login__bottom-message">
+            <button class="modal-login__link" type="submit" value="Send">Forgot your password?</button>
+          </p>
+        </div>
+      </div>
+      <div class="modal-login__tab">
+        <div class="modal-login__login">
+          <form class="modal-login__form modal-form" id="account" method="get">
+            <input class="modal-form__item modal-form__item--autofill" name="UserEmail" type="email" placeholder="Email" form="account" required>
+            <input class="modal-form__item modal-form__item--autofill" name="NewUserLogin" type="text" placeholder="New Login" form="account" required>
+            <input class="modal-form__item" name="NewUserPassword" type="password" placeholder="New Password" form="account" minlength="8" maxlength="14" required>
+            <button class="modal-form__item form-btn" type="submit" form="account">Send</button>
+          </form>
+        </div>
+      </div>
+      <form class="modal-login__password-reset form form--width-100" id="reset" method="get">
+        <div class="form__description">
+          <div class="form__title">Forgot password</div>
+          <p class="form__text">If you need help resetting your <span>password</span>, we can help
+            by sending you a link to reset it.</p>
+          <ol class="form__list list">
+            <li class="list__item">Enter either the email address or username on the account.</li>
+            <li class="list__item">Select <span>Submit</span>.</li>
+            <li class="list__item">Check your inbox for a password reset email.</li>
+            <li class="list__item">Click the <span>URL</span> provided in the <span>email</span>
+              and enter a new <span>password</span>.</li>
+          </ol>
+        </div>
+        <div class="form__inner">
+          <input type="email" class="form__email form__email--border form__email--autofill" name="UserRegisteredEmail" form="reset" placeholder="Enter your email">
+          <button class="form__btn form__btn--bg-white" type="submit" form="reset">Send</button>
+        </div>
+        <div class="form__close">Back</div>
+      </form>
+      <div class="confirm-window">
+        <p class="confirm-window__text">Data sent successfully!</p>
+      </div>
+    </div>
+  </div>
+
+</header>
+<main class="main">
+  <section class="section section--top" id="home">
+    <div class="container container--top">
+      <div class="description">
+        <h1 class="description__title">Enhancing life</h1>
+        <h2 class="description__subtitle">Excelling in care</h2>
+        <h3 class="description__text">Choose wisely. Choose CBD.</h3>
+      </div>
+      <div class="links-wrapper">
+        <div class="links-wrapper__btn modal-btn">
+          <a href="#" class="modal-btn__link">Start shopping</a>
+        </div>
+        <div class="links-wrapper__link scroll-link">
+          <a href="#products" class="scroll-link__link">See all products <span>&#8594;</span></a>
+        </div>
+      </div>
+      <div class="vertical-text">
+        <div class="vertical-text__text vertical-text__text--display-before">CBD potion health</div>
+      </div>
+      <div class="arrow" id="arrow">
+        <a href="#questions" class="arrow__link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="arrow__icon" viewBox="0 0 128 128">
+            <path stroke-linecap="square" d="M111 40.5L64 87.499m0 0L17 40.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </section>
+  <section class="section" id="weare">
+    <div class="container container--text-white">
+      <div class="trust-icons">
+        <div class="trust-icons__title">We are what we are</div>
+        <div class="trust-icons__inner">
+          <div class="trust-icons__item trust-icons__img--bg-1">
+            <img src="./images/icon_natural.png" alt="100%_natural_logo" class="trust-icons__img">
+          </div>
+          <div class="trust-icons__item trust-icons__img--bg-2">
+            <img src="./images/icon_zero-high.png" alt="zero_high_logo" class="trust-icons__img">
+          </div>
+          <div class="trust-icons__item trust-icons__img--bg-3">
+            <img src="../images/icon_shipsus.png" alt="delivery_logo" class="trust-icons__img">
+          </div>
+          <div class="trust-icons__item trust-icons__img--bg-4">
+            <img src="./images/icon_lab.png" alt="lab_logo" class="trust-icons__img">
+          </div>
+        </div>
+      </div>
+      <div class="hidden-blocks" id="questions">
+        <div class="hidden-blocks__inner">
+          <input type="radio" name="tab" class="hidden-blocks__input" id="title-1" checked="checked">
+          <label for="title-1" class="hidden-blocks__title">What is CBD?</label>
+          <input type="radio" name="tab" class="hidden-blocks__input" id="title-2">
+          <label for="title-2" class="hidden-blocks__title">Benefits</label>
+          <input type="radio" name="tab" class="hidden-blocks__input" id="title-3">
+          <label for="title-3" class="hidden-blocks__title">Our difference</label>
+        </div>
+        <div class="content-wrapper">
+
+          <div class="hidden-blocks__item hidden-blocks__item--position-relative content">
+            <div class="content__inner">
+              <h4 class="content__title">What it is and how it works</h4>
+              <div class="content__text">CBD is short for cannabidol. It is a phytocannabinoid found in
+                hemp and known for supporting the body and mind in many ways.* Charlotte's Web products
+                have cannabinoids with CBD extract.
+              </div>
+              <div class="content__text">Not to be confused with oil from hemp seeds (which doesn't contain
+                cannabinoids), CBD comes from the flowers and leaves of the hamp plant.
+              </div>
+              <div class="content__text">Why does CBD work? The human body has a vast network of receptors,
+                the endocannabinoid system.
+              </div>
+            </div>
+            <div class="content__images images">
+              <img src="./images/about_img-mountain.jpg" class="images__img" alt="mountain">
+              <img src="./images/about_img-field.jpg" class="images__img" alt="field">
+            </div>
+          </div>
+
+          <div class="hidden-blocks__item content">
+            <div class="content__inner">
+              <h5 class="content__title">Benefits</h5>
+              <div class="content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+                doloribus amet quia magni ipsam minima aliquam quam! Tempora pariatur reprehenderit quidem,
+                minus voluptate consequatur culpa hic ipsam rem omnis illum?
+              </div>
+              <div class="content__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum hic
+                id quo autem, nostrum iste?
+              </div>
+              <div class="content__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Voluptas modi possimus tempore odit ut, labore libero ullam nam.
+              </div>
+            </div>
+            <div class="content__images images">
+              <img src="./images/about_img-mountain.jpg" class="images__img" alt="mountain">
+              <img src="./images/about_img-field.jpg" class="images__img" alt="field">
+            </div>
+          </div>
+
+          <div class="hidden-blocks__item content">
+            <div class="content__inner">
+              <h6 class="content__title">Our difference</h6>
+              <div class="content__text">CBD is short for cannabidol. It is a phytocannabinoid found in
+                hemp and known for supporting the body and mind in many ways.* Charlotte's Web products
+                have cannabinoids with CBD extract.
+              </div>
+              <div class="content__text">Not to be confused with oil from hemp seeds (which doesn't contain
+                cannabinoids), CBD comes from the flowers and leaves of the hamp plant.
+              </div>
+              <div class="content__text">Why does CBD work? The human body has a vast network of receptors,
+                the endocannabinoid system.
+              </div>
+            </div>
+            <div class="content__images images">
+              <img src="./images/about_img-mountain.jpg" class="images__img" alt="mountain">
+              <img src="./images/about_img-field.jpg" class="images__img" alt="field">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="products">
+    <div class="container container--center">
+      <h2 class="page-title">CBD featured products</h2>
+      <div class="slider">
+        <div class="slider__item slider-item" id="item1">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD 500 MG orange flavor tincture</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-bottle.png" alt="bottle" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Quae repellendus obcaecati non accusamus, excepturi soluta corporis.</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item2">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">Black ice CBD muscle rub 200 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-bank.png" alt="bank" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+            sit eveniet veritatis.</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item3">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD+curcumin coffee 750 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-package.png" alt="package" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Voluptatibus impedit neque sequi excepturi, dicta placeat?</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$79.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item4">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD+curcumin coffee 750 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-wood-bottle.png" alt="bottle" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Illo corporis laudantium dolorum in?</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item5">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD 500 MG orange flavor tincture</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-oil-bottle.png" alt="bottle" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Quaerat, vel aliquid.</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item6">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">Black ice CBD muscle rub 200 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-bank.png" alt="bank" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Voluptatem sit ea minus repellat a iste voluptatibus! Et!</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$79.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item7">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD+curcumin coffee 750 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-package.png" alt="package" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Illo corporis laudantium dolorum in?</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item8">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">CBD 500 MG orange flavor tincture</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-bottle.png" alt="bottle" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Quaerat, vel aliquid.</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$49.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="slider__item slider-item" id="item9">
+          <div class="slider-item__rate rating">
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+            <div class="rating__item">
+              <svg class="rating__icon" data-rate="5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+                <path class="rating__path" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                        607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                        0 .73543 53.548 -209.72)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="slider-item__title">Black ice CBD muscle rub 200 MG</div>
+          <div class="slider-item__image-wrapper">
+            <img src="./images/icon_product-bottle.png" alt="bottle" class="slider-item__image">
+          </div>
+          <div class="slider-item__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Voluptatem sit ea minus repellat a iste voluptatibus! Et!</div>
+          <div class="slider-item__bottom">
+            <div class="slider-item__price">$79.99 USD</div>
+            <div class="slider-item__btn">
+              <button class="slider-item__link">Shop</button>
+            </div>
+            <div class="slider-item__btn slider-item__btn--display">
+              <button class="slider-item__link">Add to cart</button>
+              <button class="slider-item__link">Open cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-arrows">
+        <svg class="slider-arrows__left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <path d="M720.1 738.4c-12-12-12-31.4 0-43.4l164.5-164.4h-844C23.7 530.7 10
+                        517 10 500c0-16.9 13.7-30.6 30.6-30.6h844.6L720.7 304.9c-12-12-12-31.4
+                        0-43.4s31.4-12 43.4 0L981 477.8c11.9 11.9 12 31.2.2 43.2L763.4 738.4c-11.9
+                        12-31.4 12-43.3 0z"/>
+        </svg>
+        <svg class="slider-arrows__right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <path d="M720.1 738.4c-12-12-12-31.4 0-43.4l164.5-164.4h-844C23.7 530.7 10
+                        517 10 500c0-16.9 13.7-30.6 30.6-30.6h844.6L720.7 304.9c-12-12-12-31.4
+                        0-43.4s31.4-12 43.4 0L981 477.8c11.9 11.9 12 31.2.2 43.2L763.4 738.4c-11.9
+                        12-31.4 12-43.3 0z"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container container--center container--padding-bottom">
+      <h2 class="page-title">Frequently asked questions</h2>
+      <div class="panel">
+        <div class="panel__heading">
+          <div class="panel__link">
+            <div class="panel__icon"></div>
+            <p class="panel__title">What is Cannabidiol (CBD)?</p>
+          </div>
+        </div>
+        <div class="panel__collapse">
+          <div class="panel__body">
+            <p class="panel__text">Because CBD from hemp has no psychoactive effects, the purchase, sales,
+              or possession of hemp CBD products are completely legal in all 50 States.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel__heading">
+          <div class="panel__link">
+            <div class="panel__icon"></div>
+            <p class="panel__title">Is hemp-Derived Cannabidiol (CBD) legal?</p>
+          </div>
+        </div>
+        <div class="panel__collapse">
+          <div class="panel__body">
+            <p class="panel__text">Because CBD from hemp has no psychoactive effects, the purchase, sales,
+              or possession of hemp CBD products are completely legal in all 50 States.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel__heading">
+          <div class="panel__link">
+            <div class="panel__icon"></div>
+            <p class="panel__title">Are there any negative side effects?</p>
+          </div>
+        </div>
+        <div class="panel__collapse">
+          <div class="panel__body">
+            <p class="panel__text">Because CBD from hemp has no psychoactive effects, the purchase, sales,
+              or possession of hemp CBD products are completely legal in all 50 States.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel__heading">
+          <div class="panel__link">
+            <div class="panel__icon"></div>
+            <p class="panel__title">Do you offer a return policy?</p>
+          </div>
+        </div>
+        <div class="panel__collapse">
+          <div class="panel__body">Because CBD from hemp has no psychoactive effects, the purchase, sales,
+            or possession of hemp CBD products are completely legal in all 50 States.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="section section--relative" id="reviews">
+    <div class="slider-bottom">
+      <div class="section__inner section__inner--bg-1">
+        <div class="reviews">
+          <div class="reviews__rate rating">
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+          </div>
+          <h6 class="reviews__text">I have tried another product after using this one successfully and I am
+            <span>Back</span> for good! The flavour, the lightness of the oil and the health benefits I have
+            gotten with this oil are amazing!</h6>
+          <div class="reviews__author">Mark J.</div>
+        </div>
+      </div>
+      <div class="section__inner section__inner--bg-2">
+        <div class="reviews">
+          <div class="reviews__rate rating">
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+          </div>
+          <h6 class="reviews__text">The flavour, the lightness of the oil and the health benefits I have
+            gotten with this oil are amazing! I have tried another product after using this one successfully
+            and I am <span>Back</span> for good!</h6>
+          <div class="reviews__author">Edwin K.</div>
+        </div>
+      </div>
+      <div class="section__inner section__inner--bg-3">
+        <div class="reviews">
+          <div class="reviews__rate rating">
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+            <svg class="rating__icon rating__icon--green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 237.823">
+              <path class="rating__path rating__path--green" d="M97.143 286.44l39.45 123.052 129.22-.505-104.838 75.544 40.412 122.739-104.244-76.363L-7.101
+                                    607.27l40.412-122.739-104.838-75.544 129.22.505 39.45-123.051z" transform="matrix(.73553 0
+                                    0 .73543 53.548 -209.72)"/>
+            </svg>
+          </div>
+          <h6 class="reviews__text">I have tried another product after using this one successfully and I am
+            <span>Back</span> for good! The flavour, the lightness of the oil and the health benefits I have
+            gotten with this oil are amazing!</h6>
+          <div class="reviews__author">Joseph O.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-arrows slider-arrows--position-bottom">
+      <div class="slider-arrows__wrapper">
+        <svg class="slider-arrows__left slider-arrows__left--white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <path d="M720.1 738.4c-12-12-12-31.4 0-43.4l164.5-164.4h-844C23.7 530.7 10
+                            517 10 500c0-16.9 13.7-30.6 30.6-30.6h844.6L720.7 304.9c-12-12-12-31.4
+                            0-43.4s31.4-12 43.4 0L981 477.8c11.9 11.9 12 31.2.2 43.2L763.4 738.4c-11.9
+                            12-31.4 12-43.3 0z"/>
+        </svg>
+      </div>
+      <div class="slider-arrows__wrapper">
+        <svg class="slider-arrows__right slider-arrows__right--white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+          <path d="M720.1 738.4c-12-12-12-31.4 0-43.4l164.5-164.4h-844C23.7 530.7 10
+                            517 10 500c0-16.9 13.7-30.6 30.6-30.6h844.6L720.7 304.9c-12-12-12-31.4
+                            0-43.4s31.4-12 43.4 0L981 477.8c11.9 11.9 12 31.2.2 43.2L763.4 738.4c-11.9
+                            12-31.4 12-43.3 0z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="vertical-text vertical-text--bottom">
+      <div class="vertical-text__text vertical-text__text--bottom">CBD every day</div>
+    </div>
+  </section>
+  <section class="section section--relative section--justify-end" id="contacts">
+    <div class="container container--align-center">
+      <div class="block-info">
+        <div class="block-info__inner block-info__inner--margin-bottom">
+          <h2 class="block-info__title">CBD</h2>
+          <div class="block-info__socials socials">
+            <div class="socials__item">
+              <a href="https://www.facebook.com/" target="_blank" class="socials__link">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+            <div class="socials__item">
+              <a href="https://www.twitter.com/" target="_blank" class="socials__link">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+            <div class="socials__item">
+              <a href="https://www.youtube.com/" target="_blank" class="socials__link">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="block-info__inner block-info__inner--row">
+          <div class="block-info__inner-inner block-info__inner-inner--border-right">
+            <div class="block-info__item">
+              <a href="https://google.com/" target="_blank" class="block-info__link">Privacy policy</a>
+              <a href="https://google.com/" target="_blank" class="block-info__link">Terms of use</a>
+              <a href="https://google.com/" target="_blank" class="block-info__link">Return policy</a>
+            </div>
+          </div>
+          <div class="block-info__inner-inner block-info__inner-inner--border-left">
+            <div class="block-info__item">
+              <a href="https://google.com/" target="_blank" class="block-info__link">Shipping info</a>
+              <a href="https://google.com/" target="_blank" class="block-info__link">Returns / exchanges</a>
+              <a href="https://google.com/" target="_blank" class="block-info__link">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="subscribe-block">
+        <div class="subscribe-block__title">Subscribe to newsletter</div>
+        <form class="subscribe-block__form form" id="newsletters" method="get">
+          <input class="form__email" name="email" type="email" form="newsletters" placeholder="Email">
+          <button class="form__btn btn" type="submit" form="newsletters">
+            <svg class="btn__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+              <path d="M720.1 738.4c-12-12-12-31.4 0-43.4l164.5-164.4h-844C23.7 530.7 10
+                                517 10 500c0-16.9 13.7-30.6 30.6-30.6h844.6L720.7 304.9c-12-12-12-31.4
+                                0-43.4s31.4-12 43.4 0L981 477.8c11.9 11.9 12 31.2.2 43.2L763.4 738.4c-11.9
+                                12-31.4 12-43.3 0z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer__rights">&#169; 2018. CBD Health.</div>
+  </footer>
+</main>
+<script src="vendors~main~slider.js"></script><script src="vendors~main.js"></script><script src="main~slider.js"></script><script src="main.js"></script><script src="slider.js"></script></body>
+</html>

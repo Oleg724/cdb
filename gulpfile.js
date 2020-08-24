@@ -5,10 +5,15 @@ const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
-const pump = require('pump');
+const htmlmin = require('gulp-htmlmin');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
 
 function scssToCss (cb) {
     gulp.src('./src/scss/**/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'expanded'
         }))
@@ -16,17 +21,39 @@ function scssToCss (cb) {
             browsers: ['> 0.1%'],
             cascade: false
         }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dist/'))
         .pipe(browserSync.stream())
     cb();
 }
 
-function watchSass () {
+function minifyJs(cb) {
+    gulp.src('./src/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(concat('script.js'))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist/'))
+        .pipe(browserSync.stream());
+    cb();
+}
+
+function watchSass() {
     gulp.watch('./src/scss/**/*', scssToCss)
 }
 
-function watchFiles () {
+function watchJs() {
+    gulp.watch('./src/js/**/*.js', minifyJs)
+}
+
+function watchFiles() {
     watchSass();
+    watchJs();
     gulp.watch('./**/*.html', reloadBrowser);
 }
 
@@ -50,19 +77,21 @@ function reloadBrowser (cb) {
 
 gulp.task('html', function() {
     return gulp.src('dist/*.html')
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('js', function() {
     return gulp.src('dist/*.js')
-        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('css', function() {
-    return gulp.src('dist/*.css')
+    return gulp.src('dist/*.min.css')
         .pipe(cssnano())
-        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('build/'));
 });
 
@@ -72,6 +101,12 @@ gulp.task('compress', function() {
         .pipe(gulp.dest('build/images/'));
 });
 
-gulp.task('build', gulp.parallel('html', 'css', 'js', 'compress'));
+gulp.task('copylibs', function() {
+    return gulp.src('dist/libs/**/*.*')
+        .pipe(gulp.dest('build/libs/'));
+
+});
+
+gulp.task('build', gulp.parallel('html', 'css', 'js', 'compress', 'copylibs'));
 
 exports.default = gulp.parallel(server, watchFiles);

@@ -138,11 +138,11 @@
     }
     
     &__plus {
-        background-image: url(./images/icon-plus.svg); 
+        background-image: url(../images/icon-plus.svg);
     }
 
     &__minus {
-        background-image: url(./images/icon-minus.svg);
+        background-image: url(../images/icon-minus.svg);
     }
 
     &__quantity-value {
@@ -156,7 +156,7 @@
     }
 
     &__img {
-        background-image: url(./images/icon_arrow2.png);
+        background-image: url(../images/icon_arrow2.png);
         background-size: cover;
         background-repeat: no-repeat;
         width: 190px;

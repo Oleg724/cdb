@@ -52,7 +52,7 @@
     &--top {
         background-image: linear-gradient(to bottom, rgba(86, 91, 97, 0.4), 
             rgba(86, 91, 97, 0) 30%, transparent 30%), 
-            url(./images/bg_top.jpg);
+            url(../images/bg_top.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
@@ -63,20 +63,20 @@
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
-        display: flex;
+        display: flex!important;
         justify-content: center;
         align-items: center;
 
         &--bg-1 {
-            background-image: url(./images/bg_bottom.jpg);    
+            background-image: url(../images/bg_bottom.jpg);
         }
 
         &--bg-2 {
-            background-image: url(./images/bg_bottom2.jpg); 
+            background-image: url(../images/bg_bottom2.jpg);
         }
 
         &--bg-3 {
-            background-image: url(./images/bg_bottom3.jpg);
+            background-image: url(../images/bg_bottom3.jpg);
         }
 
         &--bg-1:before,
