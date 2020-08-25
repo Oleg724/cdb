@@ -35,6 +35,12 @@ const filename = (ext) => {
     return isDev ? `[name].${ext}`: `[name].[hash].${ext}`;
 }
 
+const destDirectory = () => {
+    return isDev
+        ? path.resolve(__dirname, 'dist')
+        : path.resolve(__dirname, 'public')
+}
+
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: "development",
@@ -44,7 +50,7 @@ module.exports = {
     },
     output: {
         filename: filename('js'),
-        path: path.resolve(__dirname, 'dist')
+        path: destDirectory()
     },
 
     devServer: {
@@ -119,7 +125,7 @@ module.exports = {
             externalImages: {
                 context: '.',
                 sources: glob.sync('./src/images/**/*.{jpg,png,svg,gif}'),
-                destination: 'dist',
+                destination: isDev ? 'dist' : 'public',
                 filename: '[path][name].[ext]'
             },
             pngquant: ({
