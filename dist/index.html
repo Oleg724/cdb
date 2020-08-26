@@ -99,7 +99,7 @@
       <div class="modal-login__tab modal-login__tab--show">
         <div class="modal-login__login">
           <form class="modal-login__form modal-form" id="sign" method="get">
-            <input class="modal-form__item modal-form__item--autofill" name="UserLogin" type="text" minlength="3" placeholder="Login" form="sign" required>
+            <input class="modal-form__item modal-form__item--autofill" name="UserLogin" type="text" minlength="3" autocomplete="username" placeholder="Login" form="sign" required>
             <input class="modal-form__item" name="UserPassword" type="password" placeholder="Password" form="sign" autocomplete="current-password" required>
             <button class="modal-form__item form-btn" type="submit" value="Send" form="sign">Send</button>
           </form>
@@ -111,9 +111,9 @@
       <div class="modal-login__tab">
         <div class="modal-login__login">
           <form class="modal-login__form modal-form" id="account" method="get">
-            <input class="modal-form__item modal-form__item--autofill" name="UserEmail" type="email" placeholder="Email" form="account" required>
-            <input class="modal-form__item modal-form__item--autofill" name="NewUserLogin" type="text" placeholder="New Login" form="account" required>
-            <input class="modal-form__item" name="NewUserPassword" type="password" placeholder="New Password" form="account" autocomplete="current-password" minlength="8" maxlength="14" required>
+            <input class="modal-form__item modal-form__item--autofill" name="UserEmail" type="email" placeholder="Email" form="account" autocomplete="email" required>
+            <input class="modal-form__item modal-form__item--autofill" name="NewUserLogin" type="text" placeholder="New Login" autocomplete="username" form="account" required>
+            <input class="modal-form__item" name="NewUserPassword" type="password" placeholder="New Password" form="account" autocomplete="new-password" minlength="8" maxlength="14" required>
             <button class="modal-form__item form-btn" type="submit" form="account">Send</button>
           </form>
         </div>
