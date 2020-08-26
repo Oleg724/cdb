@@ -1,5 +1,5 @@
 import {createDiv} from "../create-div";
-import {removeChildDiv} from "../remove-child-div";
+import {removeAllChildNodes} from "../remove-all-child-nodes";
 
 export const createCart = (elem) => {
     const $item = document.querySelector('#' + elem);
@@ -15,5 +15,5 @@ export const createCart = (elem) => {
     createDiv('.cart__quantity-change', 'cart__minus');
     createDiv('.cart__quantity', 'cart__quantity-value');
 
-    removeChildDiv($modal, '.rating');
+    removeAllChildNodes($modal, '.rating');
 }

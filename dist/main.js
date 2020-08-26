@@ -221,18 +221,34 @@ var addNewClass = function addNewClass(clazz, classToAdd, text) {
 
 /***/ }),
 
-/***/ "./js/functions/cart/add-item-to-cart.js":
-/*!***********************************************!*\
-  !*** ./js/functions/cart/add-item-to-cart.js ***!
-  \***********************************************/
-/*! exports provided: addItemToCart */
+/***/ "./js/functions/cart/add-item.js":
+/*!***************************************!*\
+  !*** ./js/functions/cart/add-item.js ***!
+  \***************************************/
+/*! exports provided: addItem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItemToCart", function() { return addItemToCart; });
-var addItemToCart = function addItemToCart(arr, selectedItem) {
-  arr.push(selectedItem.id);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItem", function() { return addItem; });
+var addItem = function addItem(item, arr) {
+  arr.push(item);
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/check-item-in-localstorage.js":
+/*!*********************************************************!*\
+  !*** ./js/functions/cart/check-item-in-localstorage.js ***!
+  \*********************************************************/
+/*! exports provided: checkItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkItem", function() { return checkItem; });
+var checkItem = function checkItem(item, arr) {
+  return arr.includes(item);
 };
 
 /***/ }),
@@ -248,10 +264,10 @@ var addItemToCart = function addItemToCart(arr, selectedItem) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearCart", function() { return clearCart; });
 /* harmony import */ var _get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./get-items-from-localstorage */ "./js/functions/cart/get-items-from-localstorage.js");
-/* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
-/* harmony import */ var _refresh_cart_counter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./refresh-cart-counter */ "./js/functions/cart/refresh-cart-counter.js");
-/* harmony import */ var _remove_item_from_localstorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./remove-item-from-localstorage */ "./js/functions/cart/remove-item-from-localstorage.js");
-/* harmony import */ var _remove_child_div__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../remove-child-div */ "./js/functions/remove-child-div.js");
+/* harmony import */ var _refresh_cart_counter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refresh-cart-counter */ "./js/functions/cart/refresh-cart-counter.js");
+/* harmony import */ var _remove_item_from_localstorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./remove-item-from-localstorage */ "./js/functions/cart/remove-item-from-localstorage.js");
+/* harmony import */ var _remove_all_child_nodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../remove-all-child-nodes */ "./js/functions/remove-all-child-nodes.js");
+/* harmony import */ var _show_empty_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./show-empty-cart */ "./js/functions/cart/show-empty-cart.js");
 
 
 
@@ -262,12 +278,11 @@ var clearCart = function clearCart(e) {
   var localStorageItems = Object(_get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__["getItemsFromLocalStorage"])('id');
 
   if (target.innerHTML === 'Clear cart' && localStorageItems) {
-    var $parentDiv = document.querySelector('.cart');
-    Object(_remove_item_from_localstorage__WEBPACK_IMPORTED_MODULE_3__["removeItemFromLocalStaroge"])('id');
-    Object(_remove_child_div__WEBPACK_IMPORTED_MODULE_4__["removeChildDiv"])($parentDiv, '.cart__item');
-    Object(_create_div__WEBPACK_IMPORTED_MODULE_1__["createDiv"])('.cart', 'cart__text', "Cart is empty, let's go shopping");
-    Object(_create_div__WEBPACK_IMPORTED_MODULE_1__["createDiv"])('.cart', 'cart__img');
-    Object(_refresh_cart_counter__WEBPACK_IMPORTED_MODULE_2__["refreshCartCounter"])();
+    var $parent = document.querySelector('.cart');
+    Object(_remove_item_from_localstorage__WEBPACK_IMPORTED_MODULE_2__["removeItemFromLocalStorage"])('id');
+    Object(_remove_all_child_nodes__WEBPACK_IMPORTED_MODULE_3__["removeAllChildNodes"])($parent, '.cart__item');
+    Object(_show_empty_cart__WEBPACK_IMPORTED_MODULE_4__["showEmptyCart"])();
+    Object(_refresh_cart_counter__WEBPACK_IMPORTED_MODULE_1__["refreshCartCounter"])();
   }
 };
 
@@ -322,7 +337,7 @@ var createCartCounter = function createCartCounter() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCart", function() { return createCart; });
 /* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
-/* harmony import */ var _remove_child_div__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../remove-child-div */ "./js/functions/remove-child-div.js");
+/* harmony import */ var _remove_all_child_nodes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../remove-all-child-nodes */ "./js/functions/remove-all-child-nodes.js");
 
 
 var createCart = function createCart(elem) {
@@ -336,7 +351,56 @@ var createCart = function createCart(elem) {
   Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart__quantity-change', 'cart__plus');
   Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart__quantity-change', 'cart__minus');
   Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart__quantity', 'cart__quantity-value');
-  Object(_remove_child_div__WEBPACK_IMPORTED_MODULE_1__["removeChildDiv"])($modal, '.rating');
+  Object(_remove_all_child_nodes__WEBPACK_IMPORTED_MODULE_1__["removeAllChildNodes"])($modal, '.rating');
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/decrease-item-quantity.js":
+/*!*****************************************************!*\
+  !*** ./js/functions/cart/decrease-item-quantity.js ***!
+  \*****************************************************/
+/*! exports provided: decreaseItemQuantity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreaseItemQuantity", function() { return decreaseItemQuantity; });
+var decreaseItemQuantity = function decreaseItemQuantity(quantity) {
+  return quantity >= 1 ? --quantity : 0;
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/display-price.js":
+/*!********************************************!*\
+  !*** ./js/functions/cart/display-price.js ***!
+  \********************************************/
+/*! exports provided: displayPrice */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "displayPrice", function() { return displayPrice; });
+var displayPrice = function displayPrice(elem, num) {
+  var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '$';
+  elem.innerHTML = text + num + ' USD';
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/display-quantity.js":
+/*!***********************************************!*\
+  !*** ./js/functions/cart/display-quantity.js ***!
+  \***********************************************/
+/*! exports provided: displayQuantity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "displayQuantity", function() { return displayQuantity; });
+var displayQuantity = function displayQuantity(elem, num) {
+  elem.innerHTML = num + ' pcs';
 };
 
 /***/ }),
@@ -375,6 +439,22 @@ var getItemsFromLocalStorage = function getItemsFromLocalStorage(id) {
 
 /***/ }),
 
+/***/ "./js/functions/cart/get-price.js":
+/*!****************************************!*\
+  !*** ./js/functions/cart/get-price.js ***!
+  \****************************************/
+/*! exports provided: getPrice */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPrice", function() { return getPrice; });
+var getPrice = function getPrice(total, quantity) {
+  return quantity >= 1 ? +(total / quantity).toFixed(2) : 0;
+};
+
+/***/ }),
+
 /***/ "./js/functions/cart/get-selected-items-array.js":
 /*!*******************************************************!*\
   !*** ./js/functions/cart/get-selected-items-array.js ***!
@@ -393,6 +473,40 @@ var getSelectedItemsArray = function getSelectedItemsArray() {
 
 /***/ }),
 
+/***/ "./js/functions/cart/get-total-item-price.js":
+/*!***************************************************!*\
+  !*** ./js/functions/cart/get-total-item-price.js ***!
+  \***************************************************/
+/*! exports provided: getTotalItemPrice */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTotalItemPrice", function() { return getTotalItemPrice; });
+var getTotalItemPrice = function getTotalItemPrice(elem, quantity) {
+  var text = elem.innerHTML;
+  var number = +text.slice(1, -4);
+  return +(number * quantity).toFixed(2);
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/increase-item-quantity.js":
+/*!*****************************************************!*\
+  !*** ./js/functions/cart/increase-item-quantity.js ***!
+  \*****************************************************/
+/*! exports provided: increaseItemQuantity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increaseItemQuantity", function() { return increaseItemQuantity; });
+var increaseItemQuantity = function increaseItemQuantity(item, obj) {
+  ++obj[item];
+};
+
+/***/ }),
+
 /***/ "./js/functions/cart/open-cart.js":
 /*!****************************************!*\
   !*** ./js/functions/cart/open-cart.js ***!
@@ -405,13 +519,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openCart", function() { return openCart; });
 /* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
 /* harmony import */ var _get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get-items-from-localstorage */ "./js/functions/cart/get-items-from-localstorage.js");
-/* harmony import */ var _create_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create-cart */ "./js/functions/cart/create-cart.js");
-/* harmony import */ var _add_new_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../add-new-class */ "./js/functions/add-new-class.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/* harmony import */ var _add_new_class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../add-new-class */ "./js/functions/add-new-class.js");
+/* harmony import */ var _show_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./show-cart */ "./js/functions/cart/show-cart.js");
+/* harmony import */ var _show_empty_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./show-empty-cart */ "./js/functions/cart/show-empty-cart.js");
 
 
 
@@ -419,85 +529,31 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var openCart = function openCart(e) {
   var target = e.target;
-  console.log(target);
-  var itemNumber = document.querySelector('.top-panel__counter');
-  var cartLogo = document.querySelector('#cart .top-panel__logo');
-  var formField = document.querySelector('.search-form');
+  var $itemNumber = document.querySelector('.top-panel__counter');
+  var $cartLogo = document.querySelector('#cart .top-panel__logo');
 
-  if (target.id === 'cart' || target.innerText === 'OPEN CART' || target.innerHTML === 'Cart' || target === cartLogo || target === itemNumber) {
-    var returnToShopText = 'Go shopping';
-    var returnToShopButton = 'modal-close-btn' + '--bottom-right';
-    var divToDelete = document.querySelector('.modal-shop-wrapper');
+  if (target.id === 'cart' || target.innerText === 'OPEN CART' || target.innerHTML === 'Cart' || target === $cartLogo || target === $itemNumber) {
+    var $formField = document.querySelector('.search-form');
+    var clazzMod = 'modal-close-btn--bottom-right';
+    var $modalWrap = document.querySelector('.modal-shop-wrapper');
 
-    if (formField.style.display === 'flex') {
-      formField.style.display = 'none';
+    if ($formField.style.display === 'flex') {
+      $formField.style.display = 'none';
     }
 
-    if (divToDelete) {
-      divToDelete.remove('.modal-shop-wrapper');
+    if ($modalWrap) {
+      $modalWrap.remove('.modal-shop-wrapper');
     }
 
     Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('#products', 'cart-wrapper');
     Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart-wrapper', 'cart');
     Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'modal-close-btn', 'Close');
     Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'modal-close-btn', 'Clear cart');
-    Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'modal-close-btn', returnToShopText);
-    Object(_add_new_class__WEBPACK_IMPORTED_MODULE_3__["addNewClass"])('.modal-close-btn', returnToShopButton, returnToShopText);
-    Object(_add_new_class__WEBPACK_IMPORTED_MODULE_3__["addNewClass"])('.modal-close-btn', 'modal-close-btn--bottom', 'Clear cart');
+    Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'modal-close-btn', 'Go shopping');
+    Object(_add_new_class__WEBPACK_IMPORTED_MODULE_2__["addNewClass"])('.modal-close-btn', clazzMod, 'Go shopping');
+    Object(_add_new_class__WEBPACK_IMPORTED_MODULE_2__["addNewClass"])('.modal-close-btn', 'modal-close-btn--bottom', 'Clear cart');
     var localStorageItems = Object(_get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_1__["getItemsFromLocalStorage"])('id');
-    var checkedItems = [];
-    var checkedItemsQuantity = {};
-
-    if (localStorageItems) {
-      var _iterator = _createForOfIteratorHelper(localStorageItems),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-
-          if (!checkedItems.includes(item)) {
-            checkedItems.push(item);
-            checkedItemsQuantity[item] = 1;
-          } else {
-            ++checkedItemsQuantity[item];
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      ;
-      checkedItems.forEach(_create_cart__WEBPACK_IMPORTED_MODULE_2__["createCart"]);
-      Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__item');
-      Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart__item', 'cart__total-price');
-      var cartValueList = document.querySelectorAll('.cart__quantity-value');
-      var itemsInCart = document.querySelectorAll('.cart__item');
-      var modalCartDiv = document.querySelector('.cart');
-      var itemPriceList = modalCartDiv.querySelectorAll('.slider-item__price');
-      var totalCartPrice = 0;
-
-      for (var i = 0; i < itemsInCart.length; i++) {
-        for (var key in checkedItemsQuantity) {
-          if (itemsInCart[i].id === key) {
-            cartValueList[i].innerHTML = checkedItemsQuantity[key] + ' pcs';
-            var itemPriceText = itemPriceList[i].innerHTML;
-            var itemPrice = +itemPriceText.slice(1, -4);
-            var totalItemPrice = +(itemPrice * checkedItemsQuantity[key]).toFixed(2);
-            totalCartPrice += totalItemPrice;
-            itemPriceList[i].innerHTML = '$' + totalItemPrice + ' USD';
-          }
-        }
-      }
-
-      var totalPriceDiv = itemsInCart[itemsInCart.length - 1].querySelector('.cart__total-price');
-      totalPriceDiv.innerHTML = 'Total: $' + totalCartPrice + ' USD';
-    } else {
-      Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__text', "Cart is empty, let's go shopping =))");
-      Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__img');
-    }
+    localStorageItems ? Object(_show_cart__WEBPACK_IMPORTED_MODULE_3__["showCart"])(localStorageItems) : Object(_show_empty_cart__WEBPACK_IMPORTED_MODULE_4__["showEmptyCart"])();
   }
 };
 
@@ -516,7 +572,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart_refresh_cart_counter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cart/refresh-cart-counter */ "./js/functions/cart/refresh-cart-counter.js");
 /* harmony import */ var _refresh_item_price_quantity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./refresh-item-price-quantity */ "./js/functions/cart/refresh-item-price-quantity.js");
 /* harmony import */ var _remove_item_from_cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./remove-item-from-cart */ "./js/functions/cart/remove-item-from-cart.js");
-/* harmony import */ var _add_item_to_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add-item-to-cart */ "./js/functions/cart/add-item-to-cart.js");
+/* harmony import */ var _shop_add_item_to_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shop/add-item-to-cart */ "./js/functions/shop/add-item-to-cart.js");
 /* harmony import */ var _set_item_to_localstorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./set-item-to-localstorage */ "./js/functions/cart/set-item-to-localstorage.js");
 /* harmony import */ var _get_selected_items_array__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./get-selected-items-array */ "./js/functions/cart/get-selected-items-array.js");
 
@@ -526,16 +582,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var proccessCart = function proccessCart(e) {
-  e.preventDefault();
   var target = e.target;
+  var className = target.className;
 
-  if (target.innerHTML === 'Add to cart' || target.className === 'cart__plus' || target.className === 'cart__minus') {
-    var selectedItem = target.closest('.slider-item');
+  if (target.innerHTML === 'Add to cart' || className === 'cart__plus' || className === 'cart__minus') {
+    var $selectedItem = target.closest('.slider-item');
     var selectedItemsArray = Object(_get_selected_items_array__WEBPACK_IMPORTED_MODULE_5__["getSelectedItemsArray"])();
-    target.className === 'cart__minus' ? Object(_remove_item_from_cart__WEBPACK_IMPORTED_MODULE_2__["removeItemFromCart"])(selectedItemsArray, selectedItem) : Object(_add_item_to_cart__WEBPACK_IMPORTED_MODULE_3__["addItemToCart"])(selectedItemsArray, selectedItem);
+    className === 'cart__minus' ? Object(_remove_item_from_cart__WEBPACK_IMPORTED_MODULE_2__["removeItemFromCart"])(selectedItemsArray, $selectedItem) : Object(_shop_add_item_to_cart__WEBPACK_IMPORTED_MODULE_3__["addItemToCart"])(selectedItemsArray, $selectedItem);
     Object(_set_item_to_localstorage__WEBPACK_IMPORTED_MODULE_4__["setItemToLocalStorage"])('id', selectedItemsArray);
     Object(_cart_refresh_cart_counter__WEBPACK_IMPORTED_MODULE_0__["refreshCartCounter"])();
-    Object(_refresh_item_price_quantity__WEBPACK_IMPORTED_MODULE_1__["refreshItemPriceQuantity"])(e);
+
+    if (target.innerHTML !== 'Add to cart') {
+      Object(_refresh_item_price_quantity__WEBPACK_IMPORTED_MODULE_1__["refreshItemPriceQuantity"])(e);
+    }
   }
 };
 
@@ -554,12 +613,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./get-items-from-localstorage */ "./js/functions/cart/get-items-from-localstorage.js");
 
 var refreshCartCounter = function refreshCartCounter() {
-  var itemNumber = document.querySelector('.top-panel__counter');
+  var $itemNumber = document.querySelector('.top-panel__counter');
 
   if (Object(_get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__["getItemsFromLocalStorage"])('id')) {
-    itemNumber.innerHTML = "(".concat(Object(_get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__["getItemsFromLocalStorage"])('id').length, ")");
+    $itemNumber.innerHTML = "(".concat(Object(_get_items_from_localstorage__WEBPACK_IMPORTED_MODULE_0__["getItemsFromLocalStorage"])('id').length, ")");
   } else {
-    itemNumber.innerHTML = '(0)';
+    $itemNumber.innerHTML = '(0)';
   }
 };
 
@@ -575,25 +634,30 @@ var refreshCartCounter = function refreshCartCounter() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "refreshItemPriceQuantity", function() { return refreshItemPriceQuantity; });
-/* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
+/* harmony import */ var _show_empty_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show-empty-cart */ "./js/functions/cart/show-empty-cart.js");
+/* harmony import */ var _get_price__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get-price */ "./js/functions/cart/get-price.js");
+/* harmony import */ var _get_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../get-element */ "./js/functions/get-element.js");
+/* harmony import */ var _remove_node__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../remove-node */ "./js/functions/remove-node.js");
+/* harmony import */ var _display_quantity__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./display-quantity */ "./js/functions/cart/display-quantity.js");
+/* harmony import */ var _display_price__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./display-price */ "./js/functions/cart/display-price.js");
+/* harmony import */ var _decrease_item_quantity__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decrease-item-quantity */ "./js/functions/cart/decrease-item-quantity.js");
+
+
+
+
+
+
 
 var refreshItemPriceQuantity = function refreshItemPriceQuantity(e) {
   var target = e.target;
-  var parentDiv = target.closest('.cart__item');
-  var itemQuantityDiv = parentDiv.querySelector('.cart__quantity-value');
-  var itemPriceDiv = parentDiv.querySelector('.slider-item__price');
-  var itemPrice = +itemPriceDiv.innerHTML.slice(1, -4);
-  var itemQuantity = +itemQuantityDiv.innerHTML.slice(0, -4);
-  var price;
-
-  if (itemQuantity >= 1) {
-    price = +(itemPrice / itemQuantity).toFixed(2);
-  } else {
-    price = 0;
-  }
-
-  var totalPriceDiv = document.querySelector('.cart__total-price');
-  var totalPrice = +totalPriceDiv.innerHTML.slice(8, -4);
+  var $parent = target.closest('.cart__item');
+  var $itemQuantity = $parent.querySelector('.cart__quantity-value');
+  var $itemPrice = $parent.querySelector('.slider-item__price');
+  var itemPrice = +$itemPrice.innerHTML.slice(1, -4);
+  var itemQuantity = +$itemQuantity.innerHTML.slice(0, -4);
+  var price = Object(_get_price__WEBPACK_IMPORTED_MODULE_1__["getPrice"])(itemPrice, itemQuantity);
+  var $totalPrice = Object(_get_element__WEBPACK_IMPORTED_MODULE_2__["getElement"])('.cart__total-price');
+  var totalPrice = +$totalPrice.innerHTML.slice(8, -4);
   var newQuantity;
   var newTotalCartPrice;
 
@@ -601,27 +665,21 @@ var refreshItemPriceQuantity = function refreshItemPriceQuantity(e) {
     newQuantity = ++itemQuantity;
     newTotalCartPrice = +(totalPrice + price).toFixed(2);
   } else if (target.className === 'cart__minus') {
-    if (itemQuantity >= 1) {
-      newQuantity = --itemQuantity;
-    } else {
-      newQuantity = 0;
-    }
-
+    newQuantity = Object(_decrease_item_quantity__WEBPACK_IMPORTED_MODULE_6__["decreaseItemQuantity"])(itemQuantity);
     newTotalCartPrice = +(totalPrice - price).toFixed(2);
   }
 
   var newPrice = (price * newQuantity).toFixed(2);
-  itemQuantityDiv.innerHTML = newQuantity + ' pcs';
-  itemPriceDiv.innerHTML = '$' + newPrice + ' USD';
-  totalPriceDiv.innerHTML = 'Total: $' + newTotalCartPrice + ' USD';
+  Object(_display_quantity__WEBPACK_IMPORTED_MODULE_4__["displayQuantity"])($itemQuantity, newQuantity);
+  Object(_display_price__WEBPACK_IMPORTED_MODULE_5__["displayPrice"])($itemPrice, newPrice);
+  Object(_display_price__WEBPACK_IMPORTED_MODULE_5__["displayPrice"])($totalPrice, newTotalCartPrice, 'Total: $');
 
   if (newPrice === '0.00') {
-    parentDiv.parentNode.removeChild(parentDiv);
+    Object(_remove_node__WEBPACK_IMPORTED_MODULE_3__["removeNode"])($parent);
   }
 
   if (newTotalCartPrice === 0) {
-    Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__text', "Cart is empty, let's go shopping");
-    Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__img');
+    Object(_show_empty_cart__WEBPACK_IMPORTED_MODULE_0__["showEmptyCart"])();
   }
 };
 
@@ -648,14 +706,30 @@ var removeItemFromCart = function removeItemFromCart(arr, selectedItem) {
 /*!************************************************************!*\
   !*** ./js/functions/cart/remove-item-from-localstorage.js ***!
   \************************************************************/
-/*! exports provided: removeItemFromLocalStaroge */
+/*! exports provided: removeItemFromLocalStorage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItemFromLocalStaroge", function() { return removeItemFromLocalStaroge; });
-var removeItemFromLocalStaroge = function removeItemFromLocalStaroge(id) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItemFromLocalStorage", function() { return removeItemFromLocalStorage; });
+var removeItemFromLocalStorage = function removeItemFromLocalStorage(id) {
   localStorage.removeItem(id);
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/set-item-quantity.js":
+/*!************************************************!*\
+  !*** ./js/functions/cart/set-item-quantity.js ***!
+  \************************************************/
+/*! exports provided: setItemQuantity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setItemQuantity", function() { return setItemQuantity; });
+var setItemQuantity = function setItemQuantity(item, obj, num) {
+  obj[item] = num;
 };
 
 /***/ }),
@@ -672,6 +746,114 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setItemToLocalStorage", function() { return setItemToLocalStorage; });
 var setItemToLocalStorage = function setItemToLocalStorage(id, arr) {
   localStorage.setItem(id, JSON.stringify(arr));
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/show-cart.js":
+/*!****************************************!*\
+  !*** ./js/functions/cart/show-cart.js ***!
+  \****************************************/
+/*! exports provided: showCart */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showCart", function() { return showCart; });
+/* harmony import */ var _check_item_in_localstorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./check-item-in-localstorage */ "./js/functions/cart/check-item-in-localstorage.js");
+/* harmony import */ var _increase_item_quantity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./increase-item-quantity */ "./js/functions/cart/increase-item-quantity.js");
+/* harmony import */ var _add_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./add-item */ "./js/functions/cart/add-item.js");
+/* harmony import */ var _set_item_quantity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./set-item-quantity */ "./js/functions/cart/set-item-quantity.js");
+/* harmony import */ var _create_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./create-cart */ "./js/functions/cart/create-cart.js");
+/* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
+/* harmony import */ var _get_total_item_price__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./get-total-item-price */ "./js/functions/cart/get-total-item-price.js");
+/* harmony import */ var _display_quantity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./display-quantity */ "./js/functions/cart/display-quantity.js");
+/* harmony import */ var _display_price__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./display-price */ "./js/functions/cart/display-price.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+
+
+
+
+
+var showCart = function showCart(localStorageItems) {
+  var checkedItems = [];
+  var checkedItemsQuantity = {};
+
+  var _iterator = _createForOfIteratorHelper(localStorageItems),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var item = _step.value;
+
+      if (Object(_check_item_in_localstorage__WEBPACK_IMPORTED_MODULE_0__["checkItem"])(item, checkedItems)) {
+        Object(_increase_item_quantity__WEBPACK_IMPORTED_MODULE_1__["increaseItemQuantity"])(item, checkedItemsQuantity);
+      } else {
+        Object(_add_item__WEBPACK_IMPORTED_MODULE_2__["addItem"])(item, checkedItems);
+        Object(_set_item_quantity__WEBPACK_IMPORTED_MODULE_3__["setItemQuantity"])(item, checkedItemsQuantity, 1);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  ;
+  checkedItems.forEach(_create_cart__WEBPACK_IMPORTED_MODULE_4__["createCart"]);
+  Object(_create_div__WEBPACK_IMPORTED_MODULE_5__["createDiv"])('.cart', 'cart__item');
+  Object(_create_div__WEBPACK_IMPORTED_MODULE_5__["createDiv"])('.cart__item', 'cart__total-price');
+  var $cartValueList = document.querySelectorAll('.cart__quantity-value');
+  var $itemsInCart = document.querySelectorAll('.cart__item');
+  var $modalCart = document.querySelector('.cart');
+  var $itemsPriceList = $modalCart.querySelectorAll('.slider-item__price');
+  var total = 0;
+
+  for (var i = 0; i < $itemsInCart.length; i++) {
+    for (var key in checkedItemsQuantity) {
+      var $price = $itemsPriceList[i];
+      var quantity = checkedItemsQuantity[key];
+
+      if ($itemsInCart[i].id === key) {
+        var totalItemPrice = Object(_get_total_item_price__WEBPACK_IMPORTED_MODULE_6__["getTotalItemPrice"])($price, quantity);
+        total += totalItemPrice;
+        Object(_display_quantity__WEBPACK_IMPORTED_MODULE_7__["displayQuantity"])($cartValueList[i], quantity);
+        Object(_display_price__WEBPACK_IMPORTED_MODULE_8__["displayPrice"])($price, totalItemPrice);
+      }
+    }
+  }
+
+  var $lastItem = $itemsInCart[$itemsInCart.length - 1];
+  var $totalPrice = $lastItem.querySelector('.cart__total-price');
+  Object(_display_price__WEBPACK_IMPORTED_MODULE_8__["displayPrice"])($totalPrice, total, 'Total: $');
+};
+
+/***/ }),
+
+/***/ "./js/functions/cart/show-empty-cart.js":
+/*!**********************************************!*\
+  !*** ./js/functions/cart/show-empty-cart.js ***!
+  \**********************************************/
+/*! exports provided: showEmptyCart */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showEmptyCart", function() { return showEmptyCart; });
+/* harmony import */ var _create_div__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create-div */ "./js/functions/create-div.js");
+
+var showEmptyCart = function showEmptyCart() {
+  Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__text', "Cart is empty, let's go shopping =))");
+  Object(_create_div__WEBPACK_IMPORTED_MODULE_0__["createDiv"])('.cart', 'cart__img');
 };
 
 /***/ }),
@@ -723,11 +905,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDiv", function() { return createDiv; });
 var createDiv = function createDiv(parentID, className, innerText) {
   var $parentList = document.querySelectorAll(parentID);
-  var $parent = !$parentList[$parentList.length - 1] ? $parentList[0] : $parentList[$parentList.length - 1];
   var $newDiv = document.createElement('div');
+  var $parent = !$parentList[$parentList.length - 1] ? $parentList[0] : $parentList[$parentList.length - 1];
   $newDiv.classList.add(className);
   innerText ? $newDiv.innerHTML = innerText : null;
   $parent.appendChild($newDiv);
+};
+
+/***/ }),
+
+/***/ "./js/functions/get-element.js":
+/*!*************************************!*\
+  !*** ./js/functions/get-element.js ***!
+  \*************************************/
+/*! exports provided: getElement */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getElement", function() { return getElement; });
+var getElement = function getElement(clazz) {
+  return document.querySelector(clazz);
 };
 
 /***/ }),
@@ -1188,21 +1386,37 @@ var showRate = function showRate(e) {
 
 /***/ }),
 
-/***/ "./js/functions/remove-child-div.js":
-/*!******************************************!*\
-  !*** ./js/functions/remove-child-div.js ***!
-  \******************************************/
-/*! exports provided: removeChildDiv */
+/***/ "./js/functions/remove-all-child-nodes.js":
+/*!************************************************!*\
+  !*** ./js/functions/remove-all-child-nodes.js ***!
+  \************************************************/
+/*! exports provided: removeAllChildNodes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeChildDiv", function() { return removeChildDiv; });
-var removeChildDiv = function removeChildDiv(parentDiv, className) {
-  var divsToDelete = parentDiv.querySelectorAll(className);
-  divsToDelete.forEach(function (item) {
-    return item.remove();
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeAllChildNodes", function() { return removeAllChildNodes; });
+var removeAllChildNodes = function removeAllChildNodes(elem, clazz) {
+  var $nodes = elem.querySelectorAll(clazz);
+  $nodes.forEach(function ($node) {
+    return $node.remove();
   });
+};
+
+/***/ }),
+
+/***/ "./js/functions/remove-node.js":
+/*!*************************************!*\
+  !*** ./js/functions/remove-node.js ***!
+  \*************************************/
+/*! exports provided: removeNode */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeNode", function() { return removeNode; });
+var removeNode = function removeNode(elem) {
+  elem.parentNode.removeChild(elem);
 };
 
 /***/ }),
@@ -1272,6 +1486,22 @@ var openSearchField = function openSearchField(e, elem) {
   if (target === elem || target === $elemTitle || target === $elemLogo) {
     $formField.style.display = 'flex';
   }
+};
+
+/***/ }),
+
+/***/ "./js/functions/shop/add-item-to-cart.js":
+/*!***********************************************!*\
+  !*** ./js/functions/shop/add-item-to-cart.js ***!
+  \***********************************************/
+/*! exports provided: addItemToCart */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItemToCart", function() { return addItemToCart; });
+var addItemToCart = function addItemToCart(arr, selectedItem) {
+  arr.push(selectedItem.id);
 };
 
 /***/ }),
@@ -1466,6 +1696,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_rate_stars_set_rate__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./functions/rate-stars/set-rate */ "./js/functions/rate-stars/set-rate.js");
 /* harmony import */ var _functions_hidden_blocks_show_current_block__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./functions/hidden-blocks/show-current-block */ "./js/functions/hidden-blocks/show-current-block.js");
 /* harmony import */ var _functions_accordeon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./functions/accordeon */ "./js/functions/accordeon.js");
+document.cookie = 'cookie1=value1; SameSite=Lax';
 
 
 
@@ -1492,26 +1723,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-document.cookie = 'cookie1=value1; SameSite=Lax'; // Nav menu ------------------------------------------------------------------------------
-
-Object(_functions_close_burger_menu__WEBPACK_IMPORTED_MODULE_6__["closeBurgerMenu"])(); // Search form ---------------------------------------------------------------------------
-
+var $body = document.querySelector('body');
 var $searchButton = document.querySelector('#search');
 var $closeSearchFieldButton = document.querySelector('#search-cancel');
 var $header = document.querySelector('.header');
 var $navBtn = $header.querySelector('#navBtn');
+var $tabs = document.querySelector('#tabs');
+var $resetWindowButton = document.querySelector('.modal-login__link');
+var $resetPasswordWindow = document.querySelector('.modal-login__password-reset');
+var $resetPasswordWindowCloseBtn = document.querySelector('.modal-login__password-reset .form__close');
+var $loginButton = document.querySelector('#login');
+var $closeButton = document.querySelector('#close');
+var $modalLoginWindowInner = document.querySelector('.modal-login__inner');
+var $modalLoginTabShowed = document.querySelector('.modal-login__tab--show');
+var $navList = document.querySelector('.nav__list');
+var $arrowFirstScreen = document.querySelector('#arrow');
+var $productsLink = document.querySelector('.scroll-link__link');
+var $main = document.querySelector('.main');
+var $sectionProducts = document.querySelector('#products');
+var $slider = document.querySelector('.slider');
+var $hiddenBlocksInputs = document.querySelector('.hidden-blocks__inner');
+var $hiddenBlocksList = document.querySelectorAll('.hidden-blocks__item');
+var $hiddenBlocksTitles = document.querySelectorAll('.hidden-blocks__title'); // Nav menu ------------------------------------------------------------------------------
+
+Object(_functions_close_burger_menu__WEBPACK_IMPORTED_MODULE_6__["closeBurgerMenu"])(); // Search form ---------------------------------------------------------------------------
+
 $searchButton.addEventListener('click', function (e) {
   Object(_functions_search_form_open_search_field__WEBPACK_IMPORTED_MODULE_8__["openSearchField"])(e, $searchButton);
 });
 $closeSearchFieldButton.addEventListener('click', _functions_search_form_close_search_field__WEBPACK_IMPORTED_MODULE_7__["closeSearchField"]);
 $navBtn.addEventListener('change', _functions_search_form_close_search_field__WEBPACK_IMPORTED_MODULE_7__["closeSearchField"]); // Login form tabs -----------------------------------------------------------------------
 
-var $tabs = document.querySelector('#tabs');
 $tabs.addEventListener('click', _functions_login_form_tabs_open_tab__WEBPACK_IMPORTED_MODULE_11__["openTab"]); // Reset password menu -------------------------------------------------------------------
 
-var $resetWindowButton = document.querySelector('.modal-login__link');
-var $resetPasswordWindow = document.querySelector('.modal-login__password-reset');
-var $resetPasswordWindowCloseBtn = document.querySelector('.modal-login__password-reset .form__close');
 $resetWindowButton.addEventListener('click', function (e) {
   Object(_functions_login_form_reset_password_open_reset_window__WEBPACK_IMPORTED_MODULE_12__["openResetWindow"])(e, $resetPasswordWindow);
 });
@@ -1519,8 +1763,6 @@ $resetPasswordWindowCloseBtn.addEventListener('click', function (e) {
   Object(_functions_login_form_reset_password_close_reset_window__WEBPACK_IMPORTED_MODULE_13__["closeResetWindow"])(e, $resetPasswordWindow);
 }); // Login form open/close -----------------------------------------------------------------
 
-var $loginButton = document.querySelector('#login');
-var $closeButton = document.querySelector('#close');
 $loginButton.addEventListener('click', function (e) {
   Object(_functions_login_form_open_login_modal__WEBPACK_IMPORTED_MODULE_9__["openLoginModal"])(e, $loginButton);
 });
@@ -1529,43 +1771,31 @@ $closeButton.addEventListener('click', function (e) {
   Object(_functions_login_form_close_login_modal__WEBPACK_IMPORTED_MODULE_10__["closeLoginModal"])(e, $closeButton);
 }); // Email input ---------------------------------------------------------------------------
 
-var $modalLoginWindowInner = document.querySelector('.modal-login__inner');
 $modalLoginWindowInner.addEventListener('click', _functions_login_form_open_confirm_window__WEBPACK_IMPORTED_MODULE_14__["openConfirmWindow"]); // Sing in input -------------------------------------------------------------------------
 
-var $modalLoginTabShowed = document.querySelector('.modal-login__tab--show');
 $modalLoginTabShowed.addEventListener('click', _functions_login_form_open_confirm_window__WEBPACK_IMPORTED_MODULE_14__["openConfirmWindow"]); // Scroll on page ------------------------------------------------------------------------
 
-var $navList = document.querySelector('.nav__list');
-var $arrowFirstScreen = document.querySelector('#arrow');
-var $productsLink = document.querySelector('.scroll-link__link');
 $navList.addEventListener('click', _functions_scroll_to_anchor__WEBPACK_IMPORTED_MODULE_4__["scrollToAnchor"]);
 $arrowFirstScreen.addEventListener('click', _functions_scroll_to_anchor__WEBPACK_IMPORTED_MODULE_4__["scrollToAnchor"]);
 $productsLink.addEventListener('click', _functions_scroll_to_anchor__WEBPACK_IMPORTED_MODULE_4__["scrollToAnchor"]); // Header menu color  --------------------------------------------------------------------
 
 window.addEventListener('scroll', _functions_change_header_color__WEBPACK_IMPORTED_MODULE_5__["changeHeaderColor"]); // Shop Modal
 
-var $main = document.querySelector('.main');
-var $sectionProducts = document.querySelector('#products');
 $main.addEventListener('click', _functions_shop_open_shop_modal__WEBPACK_IMPORTED_MODULE_15__["openShopModal"]);
 $sectionProducts.addEventListener('click', function (e) {
   Object(_functions_shop_close_shop_modal__WEBPACK_IMPORTED_MODULE_16__["closeShopModal"])(e, 'modal-close-btn');
 }); // Cart ----------------------------------------------------------------------------------
 
-var $body = document.querySelector('body');
 Object(_functions_cart_create_cart_counter__WEBPACK_IMPORTED_MODULE_17__["createCartCounter"])();
 $body.addEventListener('click', _functions_cart_open_cart__WEBPACK_IMPORTED_MODULE_18__["openCart"]);
 $body.addEventListener('click', _functions_cart_clear_cart__WEBPACK_IMPORTED_MODULE_19__["clearCart"]); // Changes to cart -----------------------------------------------------------------------
 
 $sectionProducts.addEventListener('click', _functions_cart_proccess_cart__WEBPACK_IMPORTED_MODULE_20__["proccessCart"]); // Rate stars ----------------------------------------------------------------------------
 
-var $slider = document.querySelector('.slider');
 $slider.addEventListener('mouseover', _functions_rate_stars_show_rate__WEBPACK_IMPORTED_MODULE_21__["showRate"]);
 $slider.addEventListener('mouseout', _functions_rate_stars_clear_rate__WEBPACK_IMPORTED_MODULE_22__["clearRate"]);
 $slider.addEventListener('click', _functions_rate_stars_set_rate__WEBPACK_IMPORTED_MODULE_23__["setRate"]); // Hidden blocks -------------------------------------------------------------------------
 
-var $hiddenBlocksInputs = document.querySelector('.hidden-blocks__inner');
-var $hiddenBlocksList = document.querySelectorAll('.hidden-blocks__item');
-var $hiddenBlocksTitles = document.querySelectorAll('.hidden-blocks__title');
 $hiddenBlocksInputs.addEventListener('click', function (e) {
   Object(_functions_hidden_blocks_show_current_block__WEBPACK_IMPORTED_MODULE_24__["showCurrentBlock"])(e, $hiddenBlocksTitles, $hiddenBlocksList);
 }); // Accordeon -----------------------------------------------------------------------------

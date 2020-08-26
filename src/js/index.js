@@ -1,3 +1,5 @@
+document.cookie = 'cookie1=value1; SameSite=Lax';
+
 import './libs/slick/slick.js';
 import '../scss/styles.scss';
 import './functions/sliders/slick-slider';
@@ -26,36 +28,45 @@ import {setRate} from './functions/rate-stars/set-rate';
 import {showCurrentBlock} from './functions/hidden-blocks/show-current-block';
 import {openPanel} from './functions/accordeon';
 
-document.cookie = 'cookie1=value1; SameSite=Lax';
-
-// Nav menu ------------------------------------------------------------------------------
-closeBurgerMenu();
-
-// Search form ---------------------------------------------------------------------------
+const $body = document.querySelector('body');
 const $searchButton = document.querySelector('#search');
 const $closeSearchFieldButton = document.querySelector('#search-cancel');
 const $header = document.querySelector('.header');
 const $navBtn = $header.querySelector('#navBtn');
-
-$searchButton.addEventListener('click', (e) => {
-    openSearchField(e, $searchButton)
-});
-
-$closeSearchFieldButton.addEventListener('click', closeSearchField);
-$navBtn.addEventListener('change', closeSearchField);
-
-// Login form tabs -----------------------------------------------------------------------
 const $tabs = document.querySelector('#tabs');
-
-$tabs.addEventListener('click', openTab);
-
-// Reset password menu -------------------------------------------------------------------
 const $resetWindowButton = document.querySelector('.modal-login__link');
 const $resetPasswordWindow = document.querySelector('.modal-login__password-reset');
 const $resetPasswordWindowCloseBtn = (
     document.querySelector('.modal-login__password-reset .form__close')
 );
+const $loginButton = document.querySelector('#login');
+const $closeButton = document.querySelector('#close');
+const $modalLoginWindowInner = document.querySelector('.modal-login__inner');
+const $modalLoginTabShowed = document.querySelector('.modal-login__tab--show');
+const $navList = document.querySelector('.nav__list');
+const $arrowFirstScreen = document.querySelector('#arrow');
+const $productsLink = document.querySelector('.scroll-link__link');
+const $main = document.querySelector('.main');
+const $sectionProducts = document.querySelector('#products');
+const $slider = document.querySelector('.slider');
+const $hiddenBlocksInputs = document.querySelector('.hidden-blocks__inner');
+const $hiddenBlocksList = document.querySelectorAll('.hidden-blocks__item');
+const $hiddenBlocksTitles = document.querySelectorAll('.hidden-blocks__title');
 
+// Nav menu ------------------------------------------------------------------------------
+closeBurgerMenu();
+
+// Search form ---------------------------------------------------------------------------
+$searchButton.addEventListener('click', (e) => {
+    openSearchField(e, $searchButton)
+});
+$closeSearchFieldButton.addEventListener('click', closeSearchField);
+$navBtn.addEventListener('change', closeSearchField);
+
+// Login form tabs -----------------------------------------------------------------------
+$tabs.addEventListener('click', openTab);
+
+// Reset password menu -------------------------------------------------------------------
 $resetWindowButton.addEventListener('click', (e) => {
     openResetWindow(e, $resetPasswordWindow);
 });
@@ -64,9 +75,6 @@ $resetPasswordWindowCloseBtn.addEventListener('click', (e) => {
 });
 
 // Login form open/close -----------------------------------------------------------------
-const $loginButton = document.querySelector('#login');
-const $closeButton = document.querySelector('#close');
-
 $loginButton.addEventListener('click', (e) => {
     openLoginModal(e, $loginButton);
 });
@@ -76,20 +84,12 @@ $closeButton.addEventListener('click', (e) => {
 });
 
 // Email input ---------------------------------------------------------------------------
-const $modalLoginWindowInner = document.querySelector('.modal-login__inner');
-
 $modalLoginWindowInner.addEventListener('click', openConfirmWindow);
 
 // Sing in input -------------------------------------------------------------------------
-const $modalLoginTabShowed = document.querySelector('.modal-login__tab--show');
-
 $modalLoginTabShowed.addEventListener('click', openConfirmWindow);
 
 // Scroll on page ------------------------------------------------------------------------
-const $navList = document.querySelector('.nav__list');
-const $arrowFirstScreen = document.querySelector('#arrow');
-const $productsLink = document.querySelector('.scroll-link__link');
-
 $navList.addEventListener('click', scrollToAnchor);
 $arrowFirstScreen.addEventListener('click', scrollToAnchor);
 $productsLink.addEventListener('click', scrollToAnchor);
@@ -98,17 +98,12 @@ $productsLink.addEventListener('click', scrollToAnchor);
 window.addEventListener('scroll', changeHeaderColor);
 
 // Shop Modal
-const $main = document.querySelector('.main');
-const $sectionProducts = document.querySelector('#products');
-
 $main.addEventListener('click', openShopModal);
 $sectionProducts.addEventListener('click', (e) => {
     closeShopModal(e, 'modal-close-btn')
 });
 
 // Cart ----------------------------------------------------------------------------------
-const $body = document.querySelector('body');
-
 createCartCounter();
 
 $body.addEventListener('click', openCart);
@@ -118,17 +113,11 @@ $body.addEventListener('click', clearCart);
 $sectionProducts.addEventListener('click', proccessCart);
 
 // Rate stars ----------------------------------------------------------------------------
-const $slider = document.querySelector('.slider');
-
 $slider.addEventListener('mouseover', showRate);
 $slider.addEventListener('mouseout', clearRate);
 $slider.addEventListener('click', setRate);
 
 // Hidden blocks -------------------------------------------------------------------------
-const $hiddenBlocksInputs = document.querySelector('.hidden-blocks__inner');
-const $hiddenBlocksList = document.querySelectorAll('.hidden-blocks__item');
-const $hiddenBlocksTitles = document.querySelectorAll('.hidden-blocks__title');
-
 $hiddenBlocksInputs.addEventListener('click', (e) => {
     showCurrentBlock(e, $hiddenBlocksTitles, $hiddenBlocksList)
 });

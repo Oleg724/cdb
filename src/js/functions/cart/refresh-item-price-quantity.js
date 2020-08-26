@@ -1,25 +1,25 @@
-import {createDiv} from "../create-div";
+import {showEmptyCart} from "./show-empty-cart";
+import {getPrice} from "./get-price";
+import {getElement} from "../get-element";
+import {removeNode} from "../remove-node";
+import {displayQuantity} from "./display-quantity";
+import {displayPrice} from "./display-price";
+import {decreaseItemQuantity} from "./decrease-item-quantity";
 
 export const refreshItemPriceQuantity = (e) => {
     const target = e.target;
-    const parentDiv = target.closest('.cart__item');
-    const itemQuantityDiv = parentDiv.querySelector('.cart__quantity-value');
-    const itemPriceDiv = parentDiv.querySelector('.slider-item__price');
+    const $parent = target.closest('.cart__item');
+    const $itemQuantity = $parent.querySelector('.cart__quantity-value');
+    const $itemPrice = $parent.querySelector('.slider-item__price');
 
-    let itemPrice = +itemPriceDiv.innerHTML.slice(1, -4);
-    let itemQuantity = +itemQuantityDiv.innerHTML.slice(0, -4);
+    const itemPrice = +$itemPrice.innerHTML.slice(1, -4);
+    let itemQuantity = +$itemQuantity.innerHTML.slice(0, -4);
 
-    let price;
+    const price = getPrice(itemPrice, itemQuantity);
 
-    if (itemQuantity >= 1) {
-        price = +(itemPrice/itemQuantity).toFixed(2);
-    }
-    else {
-        price = 0;
-    }
+    const $totalPrice = getElement('.cart__total-price');
+    const totalPrice = +$totalPrice.innerHTML.slice(8, -4);
 
-    const totalPriceDiv = document.querySelector('.cart__total-price');
-    const totalPrice = +totalPriceDiv.innerHTML.slice(8, -4);
     let newQuantity;
     let newTotalCartPrice;
 
@@ -28,28 +28,21 @@ export const refreshItemPriceQuantity = (e) => {
         newTotalCartPrice = +(totalPrice + price).toFixed(2);
     }
     else if (target.className === 'cart__minus') {
-        if (itemQuantity >= 1) {
-            newQuantity = --itemQuantity;
-        }
-        else {
-            newQuantity = 0;
-        }
-
+        newQuantity = decreaseItemQuantity(itemQuantity);
         newTotalCartPrice = +(totalPrice - price).toFixed(2);
     }
 
     const newPrice = (price * newQuantity).toFixed(2);
 
-    itemQuantityDiv.innerHTML = newQuantity + ' pcs';
-    itemPriceDiv.innerHTML = '$' +  newPrice  + ' USD';
-    totalPriceDiv.innerHTML = 'Total: $' + newTotalCartPrice + ' USD';
+    displayQuantity($itemQuantity, newQuantity);
+    displayPrice($itemPrice, newPrice);
+    displayPrice($totalPrice, newTotalCartPrice, 'Total: $');
 
     if (newPrice === '0.00') {
-        parentDiv.parentNode.removeChild(parentDiv);
+        removeNode($parent);
     }
 
     if (newTotalCartPrice === 0) {
-        createDiv('.cart', 'cart__text', "Cart is empty, let's go shopping");
-        createDiv('.cart', 'cart__img');
+        showEmptyCart();
     }
 }
